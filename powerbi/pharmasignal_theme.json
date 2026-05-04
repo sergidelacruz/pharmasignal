@@ -1,0 +1,39 @@
+{
+  "name": "PharmaSignal",
+  "dataColors": ["#C94040","#C47D1A","#3A7D44","#2563A8","#534AB7","#1D9E75","#888780"],
+  "background": "#FFFFFF",
+  "foreground": "#1A1A1A",
+  "tableAccent": "#C94040",
+  "good": "#3A7D44",
+  "neutral": "#C47D1A",
+  "bad": "#C94040",
+  "maximum": "#3A7D44",
+  "center": "#C47D1A",
+  "minimum": "#C94040",
+  "textClasses": {
+    "callout":  { "fontSize": 45, "fontFace": "Segoe UI", "color": "#1A1A1A" },
+    "title":    { "fontSize": 16, "fontFace": "Segoe UI", "color": "#1A1A1A" },
+    "header":   { "fontSize": 12, "fontFace": "Segoe UI", "color": "#4A4A4A" },
+    "label":    { "fontSize": 11, "fontFace": "Segoe UI", "color": "#848484" }
+  },
+  "visualStyles": {
+    "card": { "*": {
+      "dataLabels": [{ "fontSize": 28, "fontFamily": "Segoe UI" }],
+      "categoryLabels": [{ "fontSize": 11, "color": { "solid": { "color": "#848484" } } }]
+    }},
+    "tableEx": { "*": {
+      "grid": [{ "gridVertical": false, "gridHorizontalWeight": 1, "outlineWeight": 1,
+                 "outlineColor": { "solid": { "color": "#E8E8E4" } },
+                 "gridColor":    { "solid": { "color": "#E8E8E4" } }, "rowPadding": 6 }],
+      "columnHeaders": [{ "fontColor": { "solid": { "color": "#848484" } },
+                          "backColor": { "solid": { "color": "#F7F6F3" } },
+                          "fontSize": 11, "outline": "None" }]
+    }},
+    "lineChart": { "*": {
+      "dataPoint": [{ "defaultColor": { "solid": { "color": "#C94040" } } }]
+    }},
+    "barChart": { "*": {
+      "dataPoint": [{ "defaultColor": { "solid": { "color": "#2563A8" } } }]
+    }}
+  }
+}

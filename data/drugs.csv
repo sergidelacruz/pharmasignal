@@ -1,0 +1,13 @@
+drug_id,drug_name,therapeutic_area,indication,launch_date,class_avg_serious_rate
+DRG001,Veraximab,Oncology,HER2+ breast cancer,2022-04-01,0.19
+DRG002,Loretinib,Oncology,NSCLC EGFR-mutant,2021-09-01,0.21
+DRG003,Daxolimab,Oncology,Multiple myeloma,2020-03-01,0.23
+DRG004,Norafentix,CNS,Treatment-resistant depression,2022-11-01,0.12
+DRG005,Zenpravox,CNS,Bipolar disorder,2019-06-01,0.11
+DRG006,Celvaxin,Cardiology,Heart failure rEF,2022-08-01,0.14
+DRG007,Eptifenex,Cardiology,Atrial fibrillation,2018-02-01,0.13
+DRG008,Durosamab,Cardiology,Hypertrophic cardiomyopathy,2023-01-01,0.15
+DRG009,Symtravax,Infectious,MDR-TB adjunct therapy,2020-07-01,0.17
+DRG010,Falotrimab,Infectious,HIV integrase inhibition,2021-03-01,0.09
+DRG011,Relixanib,Autoimmune,Moderate-severe RA,2019-11-01,0.16
+DRG012,Omnivectin,Autoimmune,Moderate-severe Crohn's,2020-05-01,0.14
