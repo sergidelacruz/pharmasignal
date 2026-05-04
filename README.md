@@ -1,8 +1,24 @@
 # PharmaSignal — Drug Safety Early Warning System
 
+![SQL](https://img.shields.io/badge/SQL-DuckDB-blue)
+![PowerBI](https://img.shields.io/badge/Visualization-Power%20BI-F2C811?logo=powerbi)
+![Python](https://img.shields.io/badge/Data-Python-3776AB?logo=python)
+![Domain](https://img.shields.io/badge/Domain-Pharma%20Safety-C94040)
+
 > **Analytics Engineering Portfolio Project**  
 > Stack: SQL · DuckDB · Power BI  
 > Domain: Pharmaceutical Safety Monitoring
+
+## Dashboard Preview
+
+### Page 1 — Portfolio Watchlist
+![Watchlist](images/watchlist.png)
+
+### Page 2 — Drug Deep Dive
+![Deep Dive](images/dive.png)
+
+### Page 3 — Trend View
+![Trend](images/trend.png)
 
 ---
 
@@ -162,7 +178,7 @@ Load `quarterly_trend.csv`. Line chart of `total_reports` and `serious_pct` by `
 
 ---
 
-## Limitations & Real-World Extensions
+## Production Roadmap
 
 | What this project does | What a production system would add |
 |---|---|
