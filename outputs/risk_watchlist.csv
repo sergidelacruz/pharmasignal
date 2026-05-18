@@ -1,13 +1,13 @@
-drug_id,drug_name,therapeutic_area,indication,launch_date,months_since_launch,class_avg_serious_rate,total_reports,serious_reports,novel_reports,prev_reports,units_sold,serious_pct,novel_pct,rate_per_1k,avg_rate,score_rr,score_sv,score_nv,score_vl,composite_score,signal_flag
-DRG001,Veraximab,Oncology,HER2+ breast cancer,2022-04-01,49,0.19,315,162.0,126.0,265,56577.0,51.4,40.0,5.57,3.5467823529245943,62.8,100.0,80.0,18.9,72.7,Investigate
-DRG006,Celvaxin,Cardiology,Heart failure rEF,2022-08-01,45,0.14,238,127.0,92.0,182,85634.0,53.4,38.7,2.78,3.5467823529245943,31.3,100.0,77.3,30.8,64.5,Monitor
-DRG004,Norafentix,CNS,Treatment-resistant depression,2022-11-01,42,0.12,170,81.0,67.0,148,93902.0,47.6,39.4,1.81,3.5467823529245943,20.4,100.0,78.8,14.9,59.1,Monitor
-DRG008,Durosamab,Cardiology,Hypertrophic cardiomyopathy,2023-01-01,40,0.15,139,41.0,0.0,125,29220.0,29.5,0.0,4.76,3.5467823529245943,53.6,78.7,0.0,11.2,45.3,Monitor
-DRG009,Symtravax,Infectious,MDR-TB adjunct therapy,2020-07-01,70,0.17,234,56.0,0.0,244,35182.0,23.9,0.0,6.65,3.5467823529245943,75.0,56.3,0.0,0.0,42.2,Monitor
-DRG010,Falotrimab,Infectious,HIV integrase inhibition,2021-03-01,62,0.09,252,55.0,0.0,257,118752.0,21.8,0.0,2.12,3.5467823529245943,23.9,97.0,0.0,0.0,41.1,Monitor
-DRG005,Zenpravox,CNS,Bipolar disorder,2019-06-01,83,0.11,239,69.0,0.0,245,135903.0,28.9,0.0,1.76,3.5467823529245943,19.8,100.0,0.0,0.0,40.9,Monitor
-DRG012,Omnivectin,Autoimmune,Moderate-severe Crohn's,2020-05-01,72,0.14,235,62.0,0.0,253,57557.0,26.4,0.0,4.08,3.5467823529245943,46.0,75.4,0.0,0.0,40.2,Monitor
-DRG003,Daxolimab,Oncology,Multiple myeloma,2020-03-01,74,0.23,238,57.0,0.0,242,41821.0,23.9,0.0,5.69,3.5467823529245943,64.2,41.7,0.0,0.0,33.9,Clear
-DRG002,Loretinib,Oncology,NSCLC EGFR-mutant,2021-09-01,56,0.21,243,65.0,0.0,223,63641.0,26.7,0.0,3.82,3.5467823529245943,43.1,51.0,0.0,9.0,32.1,Clear
-DRG007,Eptifenex,Cardiology,Atrial fibrillation,2018-02-01,99,0.13,244,57.0,0.0,245,157517.0,23.4,0.0,1.55,3.5467823529245943,17.5,71.9,0.0,0.0,30.4,Clear
-DRG011,Relixanib,Autoimmune,Moderate-severe RA,2019-11-01,78,0.16,254,61.0,0.0,243,128666.0,24.0,0.0,1.97,3.5467823529245943,22.3,60.0,0.0,4.5,28.4,Clear
+drug_id,drug_name,therapeutic_area,indication,launch_date,months_since_launch,class_avg_serious_rate,total_reports,serious_reports,novel_reports,prev_reports,units_sold,serious_pct,novel_pct,rate_per_1k,portfolio_avg_rate,score_reporting_rate,score_severity,score_novelty,score_velocity,composite_score,signal_flag
+DRG001,Veraximab,Oncology,HER2+ breast cancer,2022-04-01,49,0.19,18,16.0,16.0,48,54593.0,88.9,88.9,0.33,0.2577567688499889,51.2,100.0,100.0,0.0,70.4,Investigate
+DRG006,Celvaxin,Cardiology,Heart failure rEF,2022-08-01,45,0.14,21,20.0,15.0,37,84449.0,95.2,71.4,0.25,0.2577567688499889,38.6,100.0,100.0,0.0,66.6,Investigate
+DRG004,Norafentix,CNS,Treatment-resistant depression,2022-11-01,42,0.12,12,10.0,8.0,54,93120.0,83.3,66.7,0.13,0.2577567688499889,20.0,100.0,100.0,0.0,61.0,Monitor
+DRG008,Durosamab,Cardiology,Hypertrophic cardiomyopathy,2023-01-01,40,0.15,18,4.0,0.0,52,29940.0,22.2,0.0,0.6,0.2577567688499889,93.3,59.3,0.0,0.0,48.7,Monitor
+DRG012,Omnivectin,Autoimmune,Moderate-severe Crohn's,2020-05-01,72,0.14,15,5.0,0.0,29,58389.0,33.3,0.0,0.26,0.2577567688499889,39.9,95.2,0.0,0.0,45.3,Monitor
+DRG011,Relixanib,Autoimmune,Moderate-severe RA,2019-11-01,78,0.16,25,10.0,0.0,36,121285.0,40.0,0.0,0.21,0.2577567688499889,32.0,100.0,0.0,0.0,44.6,Monitor
+DRG007,Eptifenex,Cardiology,Atrial fibrillation,2018-02-01,99,0.13,22,9.0,0.0,52,158328.0,40.9,0.0,0.14,0.2577567688499889,21.6,100.0,0.0,0.0,41.5,Monitor
+DRG005,Zenpravox,CNS,Bipolar disorder,2019-06-01,83,0.11,13,4.0,0.0,49,131052.0,30.8,0.0,0.1,0.2577567688499889,15.4,100.0,0.0,0.0,39.6,Clear
+DRG009,Symtravax,Infectious,MDR-TB adjunct therapy,2020-07-01,70,0.17,17,3.0,0.0,39,36701.0,17.6,0.0,0.46,0.2577567688499889,71.9,41.5,0.0,0.0,36.1,Clear
+DRG010,Falotrimab,Infectious,HIV integrase inhibition,2021-03-01,62,0.09,14,2.0,0.0,43,114826.0,14.3,0.0,0.12,0.2577567688499889,18.9,63.5,0.0,0.0,27.9,Clear
+DRG002,Loretinib,Oncology,NSCLC EGFR-mutant,2021-09-01,56,0.21,15,3.0,0.0,38,67238.0,20.0,0.0,0.22,0.2577567688499889,34.6,38.1,0.0,0.0,23.7,Clear
+DRG003,Daxolimab,Oncology,Multiple myeloma,2020-03-01,74,0.23,12,1.0,0.0,42,43598.0,8.3,0.0,0.28,0.2577567688499889,42.7,14.5,0.0,0.0,17.9,Clear
