@@ -35,9 +35,9 @@ SELECT
     ae.months_on_market,
     -- Capitalize reaction name consistently
     INITCAP(ae.reaction)                             AS reaction,
-    ae.is_novel_reaction::BOOLEAN                    AS is_novel_reaction,
+    CAST(ae.is_novel_reaction AS BOOLEAN)            AS is_novel_reaction,
     ae.outcome,
-    ae.is_serious::BOOLEAN                           AS is_serious,
+    CAST(ae.is_serious AS BOOLEAN)                   AS is_serious,
     -- Classify severity into 3 buckets for simpler visuals
     CASE ae.outcome
         WHEN 'Death'            THEN 'Critical'
