@@ -30,14 +30,14 @@ SELECT
     ae.event_date,
     -- Standardize quarter format: '2024-Q1'
     ae.quarter,
-    YEAR(ae.event_date)                              AS event_year,
-    QUARTER(ae.event_date)                           AS event_quarter_num,
+    YEAR(ae.event_date) AS event_year,
+    QUARTER(ae.event_date) AS event_quarter_num,
     ae.months_on_market,
     -- Capitalize reaction name consistently
-    INITCAP(ae.reaction)                             AS reaction,
-    CAST(ae.is_novel_reaction AS BOOLEAN)            AS is_novel_reaction,
+    INITCAP(ae.reaction) AS reaction,
+    CAST(ae.is_novel_reaction AS BOOLEAN) AS is_novel_reaction,
     ae.outcome,
-    CAST(ae.is_serious AS BOOLEAN)                   AS is_serious,
+    CAST(ae.is_serious AS BOOLEAN) AS is_serious,
     -- Classify severity into 3 buckets for simpler visuals
     CASE ae.outcome
         WHEN 'Death'            THEN 'Critical'
@@ -45,7 +45,7 @@ SELECT
         WHEN 'Hospitalization'  THEN 'Serious'
         WHEN 'Moderate'         THEN 'Moderate'
         ELSE                         'Mild'
-    END                                              AS severity_bucket,
+    END AS severity_bucket,
     ae.reporter_type,
     ae.country,
     ae.age_group,
@@ -61,11 +61,10 @@ WHERE ae.event_date <= CURRENT_DATE;
 CREATE OR REPLACE VIEW stg_quarterly_sales AS
 SELECT
     drug_id,
-    LEFT(year_month, 4)::INTEGER                               AS sales_year,
-    QUARTER(STRPTIME(year_month || '-01', '%Y-%m-%d'))         AS sales_quarter_num,
-    year_month[:4] || '-Q' || QUARTER(STRPTIME(year_month || '-01','%Y-%m-%d'))::VARCHAR
-                                                               AS quarter,
-    SUM(units_sold)                                            AS quarterly_units_sold
+    CAST(LEFT(year_month, 4) AS INTEGER) AS sales_year,
+    QUARTER(STRPTIME(year_month || '-01', '%Y-%m-%d')) AS sales_quarter_num,
+    LEFT(year_month, 4) || '-Q' || CAST(QUARTER(STRPTIME(year_month || '-01','%Y-%m-%d')) AS VARCHAR) AS quarter,
+    SUM(units_sold) AS quarterly_units_sold
 FROM raw_sales_volume
 GROUP BY drug_id, sales_year, sales_quarter_num, quarter;
 
