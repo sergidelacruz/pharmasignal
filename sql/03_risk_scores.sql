@@ -31,13 +31,14 @@
 -- =============================================================
 
 -- ── Step 1: Q1 2024 AE counts per drug ───────────────────
+-- The current quarter snapshot — the baseline for all score calculations.
 WITH q1_2024 AS (
     SELECT
         drug_id,
-        COUNT(*)                                        AS total_reports,
-        SUM(is_serious::INTEGER)                        AS serious_reports,
-        SUM(is_novel_reaction::INTEGER)                 AS novel_reports,
-        COUNT(DISTINCT reaction)                        AS distinct_reactions
+        COUNT(*) AS total_reports,
+        SUM(CAST(is_serious AS INTEGER) AS serious_reports,
+        SUM(CAST(is_novel_reaction AS INTEGER) AS novel_reports,
+        COUNT(DISTINCT reaction) AS distinct_reactions
     FROM stg_adverse_events
     WHERE quarter = '2024-Q1'
     GROUP BY drug_id
@@ -64,7 +65,7 @@ q1_sales AS (
 -- Used to benchmark each drug's rate against the whole portfolio
 portfolio_avg_rate AS (
     SELECT
-        AVG(q.total_reports::DOUBLE / NULLIF(s.quarterly_units_sold, 0) * 1000) AS avg_rate_per_1k
+        AVG(CAST(q.total_reports AS DOUBLE / NULLIF(s.quarterly_units_sold, 0) * 1000) AS avg_rate_per_1k
     FROM q1_2024 q
     JOIN q1_sales s ON q.drug_id = s.drug_id
 ),
@@ -80,32 +81,32 @@ raw_components AS (
         d.months_since_launch,
         d.class_avg_serious_rate,
 
-        COALESCE(q.total_reports,  0)                  AS total_reports,
-        COALESCE(q.serious_reports, 0)                 AS serious_reports,
-        COALESCE(q.novel_reports,   0)                 AS novel_reports,
-        COALESCE(p.total_reports_prev, 0)              AS total_reports_prev,
-        COALESCE(s.quarterly_units_sold, 1)            AS units_sold,
+        COALESCE(q.total_reports,  0) AS total_reports,
+        COALESCE(q.serious_reports, 0) AS serious_reports,
+        COALESCE(q.novel_reports,   0) AS novel_reports,
+        COALESCE(p.total_reports_prev, 0) AS total_reports_prev,
+        COALESCE(s.quarterly_units_sold, 1) AS units_sold,
 
         -- Serious rate this quarter
         ROUND(
-            COALESCE(q.serious_reports, 0)::DOUBLE
+            CAST(COALESCE(q.serious_reports, 0) AS DOUBLE
             / NULLIF(q.total_reports, 0) * 100
-        , 1)                                           AS serious_pct,
+        , 1) AS serious_pct,
 
         -- Novel reaction rate this quarter
         ROUND(
-            COALESCE(q.novel_reports, 0)::DOUBLE
+            CAST(COALESCE(q.total_reports, 0)) AS DOUBLE
             / NULLIF(q.total_reports, 0) * 100
-        , 1)                                           AS novel_pct,
+        , 1) AS novel_pct,
 
         -- Reporting rate per 1,000 units sold
         ROUND(
-            COALESCE(q.total_reports, 0)::DOUBLE
+            CAST(COALESCE(q.total_reports, 0)) AS DOUBLE
             / NULLIF(s.quarterly_units_sold, 0) * 1000
-        , 2)                                           AS reports_per_1k_units,
+        , 2) AS reports_per_1k_units,
 
         -- Portfolio average rate (scalar, same value for all rows)
-        ROUND(pa.avg_rate_per_1k, 2)                  AS portfolio_avg_rate_per_1k
+        ROUND(pa.avg_rate_per_1k, 2) AS portfolio_avg_rate_per_1k
 
     FROM stg_drugs d
     LEFT JOIN q1_2024   q  ON d.drug_id = q.drug_id
@@ -126,7 +127,7 @@ scored AS (
             ROUND(
                 (reports_per_1k_units / NULLIF(portfolio_avg_rate_per_1k, 0)) * 40
             , 1)
-        )                                              AS score_reporting_rate,
+        ) AS score_reporting_rate,
 
         -- Component 2: Severity Ratio
         -- How much higher is the serious rate vs the class benchmark?
@@ -135,22 +136,22 @@ scored AS (
             ROUND(
                 (serious_pct / 100.0) / NULLIF(class_avg_serious_rate, 0) * 40
             , 1)
-        )                                              AS score_severity,
+        ) AS score_severity,
 
         -- Component 3: Novelty Index
         -- Pure % novel reactions, scaled to 0–100.
         LEAST(100,
             ROUND(novel_pct * 2.0, 1)
-        )                                              AS score_novelty,
+        ) AS score_novelty,
 
         -- Component 4: Velocity
         -- QoQ growth rate, capped at 100.
         LEAST(100, GREATEST(0,
             ROUND(
-                (total_reports - total_reports_prev)::DOUBLE
+                CAST((total_reports - total_reports_prev)) AS DOUBLE
                 / NULLIF(total_reports_prev, 0) * 100
             , 1)
-        ))                                             AS score_velocity
+        )) AS score_velocity
 
     FROM raw_components
 ),
@@ -164,7 +165,7 @@ composite AS (
             score_severity       * 0.35 +
             score_novelty        * 0.20 +
             score_velocity       * 0.15
-        , 1)                                           AS composite_score
+        , 1) AS composite_score
     FROM scored
 )
 
@@ -191,6 +192,6 @@ SELECT
         WHEN composite_score >= 65 THEN 'Investigate'
         WHEN composite_score >= 40 THEN 'Monitor'
         ELSE                             'Clear'
-    END                                                AS signal_flag
+    END AS signal_flag
 FROM composite
 ORDER BY composite_score DESC;
