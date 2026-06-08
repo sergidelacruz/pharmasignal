@@ -4,6 +4,7 @@
 ![PowerBI](https://img.shields.io/badge/Visualization-Power%20BI-F2C811?logo=powerbi)
 ![Python](https://img.shields.io/badge/Data-Python-3776AB?logo=python)
 ![Domain](https://img.shields.io/badge/Domain-Pharma%20Safety-C94040)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?logo=streamlit)](https://pharmasignal-yf63tdumkdzjxew57mduur.streamlit.app)
 
 > **Analytics Engineering Portfolio Project**  
 > Stack: SQL · DuckDB · Power BI  
@@ -19,6 +20,22 @@
 
 ### Page 3 — Trend View
 ![Trend](images/trend.png)
+
+---
+
+## 🤖 AI Agent — Live Demo
+
+> **Try it:** [pharmasignal-yf63tdumkdzjxew57mduur.streamlit.app](https://pharmasignal-yf63tdumkdzjxew57mduur.streamlit.app)
+
+An AI agent built on top of the SQL pipeline, deployed publicly on Streamlit Cloud.
+
+**Stack:** Streamlit · Snowflake Cortex · llama3-8b · Self-healing SQL
+
+**What it does:**
+- Accepts natural language questions about drug safety data
+- Translates them into SQL queries via LLM
+- Self-heals failed queries automatically (up to 3 retries)
+- Returns structured results directly from Snowflake
 
 ---
 
@@ -53,6 +70,7 @@ pharmasignal/
 │   └── quarterly_trend.csv            ← Drug × quarter trend data
 └── powerbi/
     └── pharmasignal_theme.json        ← Color theme for Power BI
+├── app.py                              ← Streamlit AI Agent (deployed)
 ```
 
 ---
